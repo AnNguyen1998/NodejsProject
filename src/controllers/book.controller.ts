@@ -1,6 +1,7 @@
-const BookTest = require('../models/book.model.ts');
+import { Request, Response } from 'express';
+import BookTest from '../models/book.model';
 
-exports.getAllBooks = async (req, res) => {
+export const getAllBooks = async (req: Request, res: Response) => {
   try {
     const books = await BookTest.find();
     res.json(books);
@@ -9,7 +10,7 @@ exports.getAllBooks = async (req, res) => {
   }
 };
 
-exports.createBook = async (req, res) => {
+export const createBook = async (req: Request, res: Response) => {
   const newBook = new BookTest(req.body);
   try {
     const savedBook = await newBook.save();
@@ -18,3 +19,8 @@ exports.createBook = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+
+module.exports = {
+  getAllBooks,
+  createBook
+}; 

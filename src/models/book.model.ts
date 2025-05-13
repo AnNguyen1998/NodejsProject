@@ -1,10 +1,16 @@
-const mongoose = require("mongoose");
+import mongoose, { Schema, Document } from 'mongoose';
 
-const bookSchema = new mongoose.Schema({
-    bookName: { type: String, require: true },
-    bookId: { type: Number, require:true },
+interface IBook extends Document {
+    bookName: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
+const bookSchema = new Schema({
+    bookName: { type: String, required: true },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
 });
-const BookTest = mongoose.model('Book', bookSchema);
-module.exports = BookTest;
+
+const BookTest = mongoose.model<IBook>('Book', bookSchema);
+export default BookTest; 
