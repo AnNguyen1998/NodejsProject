@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import bookRoutes from './routes/book.routes';
+import taskRoutes from './routes/task.routes';
+import projectRoutes from './routes/project.routes';
 import connectDB from './config/database';
 
 const app = express();
@@ -12,7 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 
 connectDB();
 
-app.use('/api/books', bookRoutes);
+app.use('/api/projects', projectRoutes);
+app.use('/api/tasks', taskRoutes);
 
 app.get('/', (req, res) => {
   res.send('Welcome!!!')

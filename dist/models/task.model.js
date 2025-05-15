@@ -34,10 +34,14 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const bookSchema = new mongoose_1.Schema({
-    bookName: { type: String, required: true },
+const taskSchema = new mongoose_1.Schema({
+    taskName: { type: String, required: true },
+    beginDate: { type: String, required: true },
+    endDate: { type: String, required: true },
+    process: { type: Number, required: true },
+    status: { type: String, required: true },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
 });
-const BookTest = mongoose_1.default.model('Book', bookSchema);
-exports.default = BookTest;
+const TaskTest = mongoose_1.default.model('Task', taskSchema);
+exports.default = TaskTest;

@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose = require('mongoose');
 const URL_1 = 'mongodb+srv://conandold:1234@livi.rlmtnle.mongodb.net/?retryWrites=true&w=majority&appName=Livi';
 const connectDB = async () => {
@@ -10,4 +12,4 @@ const connectDB = async () => {
         process.exit(1);
     }
 };
-module.exports = connectDB;
+exports.default = connectDB;
